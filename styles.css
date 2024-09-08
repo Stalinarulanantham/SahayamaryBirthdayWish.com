@@ -1,0 +1,159 @@
+/* General styling */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to top, #A9F1DF, #FFBBBB);
+    overflow: hidden;
+}
+
+/* Styling for the message */
+.message h1 {
+    color: red;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+/* Container for images moving left to right */
+.image-container-left, .image-container-right {
+    position: relative;
+    width: 350px;
+    height: 400px; /* Adjusted height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-bottom: 2px; /* Reduce the gap between the two rows */
+}
+
+/* Frame styling */
+.image-frame {
+    display: inline-block;
+    width: 300px; /* Increased width */
+    height: 400px; /* Increased height */
+    margin: 0 1px; /* Space between frames */
+    border: 10px solid white; /* Thicker border */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    background: #f0f0f0;
+    box-sizing: border-box;
+}
+
+/* Image styling */
+.image-horizontal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keyframes for left to right movement */
+@keyframes move-left-to-right {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Keyframes for right to left movement */
+@keyframes move-right-to-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Apply animation to containers */
+.image-container-left {
+    animation-name: move-left-to-right;
+    animation-duration: 12s; /* Slightly longer duration for smoother movement */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.image-container-right {
+    animation-name: move-right-to-left;
+    animation-duration: 12s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Pop effect styling */
+#pop-effect {
+    font-size: 50px;
+    position: absolute;
+    top: -100px;
+    left: 20%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 10;
+
+/* Apply animations */
+animation-name: pop-fall, pop-scale; /* Name of both animations */
+animation-duration: 3s, 0s; /* Duration for pop-fall and pop-scale */
+animation-timing-function: ease-in, ease-out; /* Timing functions for both animations */
+animation-iteration-count: infinite; /* Run both animations infinitely */
+animation-delay: 2s; /* Start immediately */
+animation-fill-mode: forwards; /* Retain the final state of both animations */}
+
+/* Pop effect fall animation */
+@keyframes pop-fall {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+    100% {
+        top: 99%;
+        opacity: 1;
+    }
+}
+:root{
+    --SCALESIZE:2;
+}
+/* Pop effect animation for scaling */
+@keyframes pop-scale {
+    0% {
+        transform: scale(var(--SCALESIZE)) translateX(0%);
+        opacity: 1;
+    }
+    90% {
+        transform: scale(var(--SCALESIZE)) translateX(0%);
+        opacity: 1;
+    }
+    95% {
+        transform: scale(var(--SCALESIZE)) translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(var(--SCALESIZE)) translateX(0%);
+        opacity: 1;
+    }
+}
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .message h1 {
+        font-size: 30px; /* Reduce the font size for mobile */
+    }
+
+    .image-frame {
+        width: 150px; /* Adjust frame size for mobile */
+        height: 200px; /* Adjust frame size for mobile */
+    }
+
+    .image-container-left, .image-container-right {
+        height: 200px; /* Adjust container height for mobile */
+    }
+
+    #pop-effect {
+        font-size: 30px; /* Reduce pop effect size for mobile */
+    }
+}
+
